@@ -49,3 +49,12 @@ jobs:
           echo " $(hostname) "
           echo " Let see $ENV_REPO secret"
           echo " Let see $ENV_REPO_VAR "
+
+  Agent-variable:
+    runs-on: ubuntu-22.04
+    needs: stage-pipeline
+    steps:
+      - name: Agent vaiable and secrets
+        run: |
+          echo "Lets see $AGENT secrets"
+          echo "Lets see $AGENT_VAR"
