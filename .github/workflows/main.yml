@@ -21,11 +21,11 @@ jobs:
         run: |
           echo "$(date)"
           echo " Let see $ENV_VAR "
-          echo "Let see $ENV_SECRET"
+          echo "Let see $ENV_SECRET secret"
 
   second-pipeline:
     runs-on: ubuntu-24.04
-    environment: PROD
+    environment: PRODUCTION
     env:
       ENV_SECRET_PROD: ${{ secrets.ENV_SECRET_PROD }}
       ENV_VAR_PROD: ${{ vars.ENV_VAR_PROD }}
@@ -34,7 +34,7 @@ jobs:
       - name: Execute
         run: |
           echo " $(ifconfig) "
-          echo " Let see $ENV_SECRET_PROD "
+          echo " Let see $ENV_SECRET_PROD secret"
           echo " Let see $ENV_VAR_PROD"
 
   third-pipeline:
