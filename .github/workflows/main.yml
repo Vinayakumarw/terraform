@@ -57,4 +57,4 @@ jobs:
       - name: Agent vaiable and secrets
         run: |
           echo "Lets see ${{ secrets.AGENT }} secrets"
-          echo "Lets see ${{ vars.AGENT_VAR }}"
+          echo "Lets see ${{ vars.AGENT_VAR }}" 
