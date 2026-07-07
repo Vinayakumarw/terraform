@@ -6,4 +6,4 @@ jobs:
   first-pipeline:
     runs-on: ubuntu-22.04
     steps:
-      run: echo "welcome github actions"
+    - run: echo "welcome github actions"
