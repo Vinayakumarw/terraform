@@ -1,7 +1,9 @@
 name: Workflow, jobs, steps
 
 on:
-  workflow_dispatch:
+  push:
+   branches:
+     - master
 
 jobs:
   first-pipeline:
@@ -19,5 +21,12 @@ jobs:
     steps:
       - name: Execute
         run: echo " $(ifconfig) "
+
+  third-pipeline:
+    runs-on: ubuntu-24.04
+    needs: first-pipeline
+    steps:
+      - name: Execute
+        run: echo " $(hostname) "
         
   
