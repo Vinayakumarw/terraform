@@ -1,0 +1,19 @@
+name: Reusable Build
+
+on:
+  workflow_call:
+    inputs:
+      app-name:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Application
+        run: |
+          echo "Building ${{ inputs.app-name }}"
