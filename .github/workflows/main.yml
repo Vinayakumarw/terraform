@@ -9,6 +9,10 @@ jobs:
   first-pipeline:
     runs-on: ubuntu-22.04
     environment: STAGE
+    env:
+      ENV_VAR: ${{ vars.ENV_VAR }}
+      ENV_SECRET: ${{ secrets.ENV_SECRET}}
+    
     steps:
       - name: Say welcome
         run: echo "welcome github actions"
@@ -22,6 +26,9 @@ jobs:
   second-pipeline:
     runs-on: ubuntu-24.04
     environment: PROD
+    env:
+      ENV_SECRET_PROD: ${{ secrets.ENV_SECRET_PROD }}
+      ENV_VAR_PROD: ${{ vars.ENV_VAR_PROD }}
     needs: first-pipeline
     steps:
       - name: Execute
@@ -32,10 +39,13 @@ jobs:
 
   third-pipeline:
     runs-on: ubuntu-24.04
+    env:
+      ENV_REPO: ${{ secrets.ENV_REPO }}
+      ENV_REPO_VAR: ${{ vars.ENV_REPO_VAR }}
     needs: first-pipeline
     steps:
       - name: Execute
         run: |
           echo " $(hostname) "
           echo " Let see $ENV_REPO secret"
-          echo " Let see $ENV_REPO secret"
+          echo " Let see $ENV_REPO_VAR "
