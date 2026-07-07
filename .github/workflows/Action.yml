@@ -3,7 +3,7 @@ name: my first multi-stage and multi-job pipeline
 on: 
   push: 
    branches: 
-     - main
+     - master
 
 jobs:
   job-1:
