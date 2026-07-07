@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Say welcome
         run: echo "welcome github actions"
-      - name: welcome
+      - name: env variable and secrets
         if: success()
         run: |
           echo "$(date)"
@@ -29,7 +29,7 @@ jobs:
     env:
       ENV_SECRET_PROD: ${{ secrets.ENV_SECRET_PROD }}
       ENV_VAR_PROD: ${{ vars.ENV_VAR_PROD }}
-    needs: first-pipeline
+    needs: stage-pipeline
     steps:
       - name: Execute
         run: |
@@ -42,7 +42,7 @@ jobs:
     env:
       ENV_REPO: ${{ secrets.ENV_REPO }}
       ENV_REPO_VAR: ${{ vars.ENV_REPO_VAR }}
-    needs: first-pipeline
+    needs: stage-pipeline
     steps:
       - name: Execute
         run: |
