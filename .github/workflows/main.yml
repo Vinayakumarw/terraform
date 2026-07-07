@@ -56,5 +56,5 @@ jobs:
     steps:
       - name: Agent vaiable and secrets
         run: |
-          echo "Lets see $AGENT secrets"
-          echo "Lets see $AGENT_VAR"
+          echo "Lets see ${{ secrets.AGENT }} secrets"
+          echo "Lets see ${{ vars.AGENT_VAR }}"
