@@ -1,9 +1,11 @@
 name: Workflow, jobs, steps
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+
 jobs:
   first-pipeline:
     runs-on: ubuntu-22.04
     steps:
-    - run: echo "welcome github actions"
+      - name: Say welcome
+        run: echo "welcome github actions"
