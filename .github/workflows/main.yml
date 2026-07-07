@@ -13,10 +13,11 @@ jobs:
         if: success()
         run: echo "$(date)"
 
-  secon-pipeline:
+  second-pipeline:
     runs-on: ubuntu-24.04
+    needs: first-pipeline
     steps:
       - name: Execute
         run: echo " $(ifconfig) "
-        needs: first-pipeline
+        
   
