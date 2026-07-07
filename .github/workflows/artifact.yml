@@ -22,7 +22,7 @@ jobs:
         uses: namespace-actions/upload-artifact@v1
         with:
           name: sample-artifact
-          path: ./path/artifact.txt
+          path: artifact.txt
     
   artifact-consumer:
     name: Consume Artifact
@@ -32,7 +32,7 @@ jobs:
       - name: Download artifact
         uses:  namespace-actions/download-artifact@v2
         with:
-          name: ./path/sample-artifact
+          name: sample-artifact
 
       - name: Display artifact content
         run: |
