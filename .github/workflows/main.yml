@@ -51,7 +51,7 @@ jobs:
           echo " Let see $ENV_REPO_VAR "
 
   Agent-variable:
-    runs-on: ubuntu-22.04
+    runs-on: namespace-profile-vinaykumar
     needs: stage-pipeline
     steps:
       - name: Agent vaiable and secrets
