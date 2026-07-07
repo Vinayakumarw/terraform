@@ -10,6 +10,6 @@ jobs:
       - name: Say welcome
         run: echo "welcome github actions"
       - name: welcome
-        needs: Say welcome
-        run: echo "$date"
+        if: success()
+        run: echo "$(date)"
   
