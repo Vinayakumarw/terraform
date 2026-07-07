@@ -1,0 +1,39 @@
+name: artifact upload and download
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  artifact-producer:
+    name: Produce Artifact
+    runs-on: namespace-profile-vinaykumar
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create artifact
+        run: |
+          echo "This is a sample artifact" > artifact.txt
+          echo "Welcome to the artifact upload and download workflow!" >> artifact.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sample-artifact
+          path: artifact.txt
+    
+  artifact-consumer:
+    name: Consume Artifact
+    runs-on: namespace-profile-vinaykumar
+    needs: artifact-producer
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: sample-artifact
+
+      - name: Display artifact content
+        run: |
+            cat artifact.txt
