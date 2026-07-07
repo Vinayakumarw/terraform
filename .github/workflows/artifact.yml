@@ -10,8 +10,8 @@ jobs:
     name: Produce Artifact
     runs-on: namespace-profile-vinaykumar
     steps:
-      - name: Checkout code
-        uses: namespace-actions/upload-artifact@v1
+    #   - name: Checkout code
+    #     uses: namespace-actions/upload-artifact@v1
 
       - name: Create artifact
         run: |
