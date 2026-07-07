@@ -8,19 +8,25 @@ on:
 jobs:
   first-pipeline:
     runs-on: ubuntu-22.04
+    environment: STAGE
     steps:
       - name: Say welcome
         run: echo "welcome github actions"
       - name: welcome
         if: success()
         run: echo "$(date)"
+        run: echo " Let see $ENV_VAR "
+        run: echo "Let see $ENV_SECRET"
 
   second-pipeline:
     runs-on: ubuntu-24.04
+    environment: PROD
     needs: first-pipeline
     steps:
       - name: Execute
         run: echo " $(ifconfig) "
+        run: echo " Let see $ENV_SECRET_PROD "
+        run: echo " Let see $ENV_VAR_PROD
 
   third-pipeline:
     runs-on: ubuntu-24.04
@@ -28,5 +34,7 @@ jobs:
     steps:
       - name: Execute
         run: echo " $(hostname) "
+        run: echo " Let see $ENV_REPO secret"
+        run: echo " Let see $ENV_REPO secret"
         
   
