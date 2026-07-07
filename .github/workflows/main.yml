@@ -6,7 +6,7 @@ on:
      - master
 
 jobs:
-  first-pipeline:
+  stage-pipeline:
     runs-on: ubuntu-22.04
     environment: STAGE
     env:
@@ -23,7 +23,7 @@ jobs:
           echo " Let see $ENV_VAR "
           echo "Let see $ENV_SECRET secret"
 
-  second-pipeline:
+  production-pipeline:
     runs-on: ubuntu-24.04
     environment: PRODUCTION
     env:
