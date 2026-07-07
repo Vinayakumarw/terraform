@@ -9,3 +9,7 @@ jobs:
     steps:
       - name: Say welcome
         run: echo "welcome github actions"
+      - name: welcome
+        needs: Say welcome
+        run: echo "$date"
+  
