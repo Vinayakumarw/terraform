@@ -8,8 +8,8 @@ on:
         required: true
         type: string
     # Define secrets that the caller workflow must supply
-    secrets:
-      ENV_SECRET:
+    variables:
+      ENV_VAR:
         required: true
 
 jobs:
@@ -22,4 +22,4 @@ jobs:
       - name: Run Build
         run: |
           echo "Building for target environment: ${{ inputs.environment }}"
-          echo "Using secret token: ${{ secrets.ENV_SECRET }}"
+          echo "Using secret token: ${{ secrets.ENV_VAR }}"

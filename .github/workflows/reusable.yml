@@ -12,7 +12,7 @@ jobs:
     with:
       environment: STAGE
     secrets:
-      ENV_SECRET: ${{ secrets.ENV_SECRET }}
+      ENV_VAR: ${{ secrets.ENV_VAR }}
 
   # Call the same reusable workflow for Production
   call-prod-build:
@@ -21,4 +21,4 @@ jobs:
     with:
       environment: PRODUCTION
     secrets:
-      ENV_SECRET: ${{ secrets.ENV_SECRET_PROD }}
+      ENV_VAR: ${{ secrets.ENV_VAR_PROD }}
