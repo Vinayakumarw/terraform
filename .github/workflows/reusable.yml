@@ -8,7 +8,7 @@ on:
 jobs:
   # Call the reusable workflow for Staging
   call-stage-build:
-    uses: ./.github/workflows/reusable-build.yml  # Path to local reusable file
+    uses: ./.github/workflows/build.yml  # Path to local reusable file
     with:
       environment: STAGE
     secrets:
