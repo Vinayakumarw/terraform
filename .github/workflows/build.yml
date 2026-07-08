@@ -1,19 +1,25 @@
-name: Reusable Build
+name: Reusable Build Pipeline
 
 on:
   workflow_call:
+    # Define inputs that the caller workflow must supply
     inputs:
-      app-name:
+      environment:
         required: true
         type: string
+    # Define secrets that the caller workflow must supply
+    secrets:
+      ENV_SECRET:
+        required: true
 
 jobs:
-  build:
-    runs-on: ubuntu-22.04
-
+  build-and-test:
+    runs-on: ubuntu-24.04
     steps:
-    #   - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Build Application
+      - name: Run Build
         run: |
-          echo "Building ${{ inputs.app-name }}"
+          echo "Building for target environment: ${{ inputs.environment }}"
+          echo "Using secret token: ${{ secrets.ENV_SECRET }}"

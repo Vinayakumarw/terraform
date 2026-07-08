@@ -1,12 +1,24 @@
-name: CI Pipeline
+name: Main Application Pipeline
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  build:
+  # Call the reusable workflow for Staging
+  call-stage-build:
+    uses: ./.github/workflows/reusable-build.yml  # Path to local reusable file
+    with:
+      environment: STAGE
+    secrets:
+      API_TOKEN: ${{ secrets.ENV_SECRET }}
+
+  # Call the same reusable workflow for Production
+  call-prod-build:
+    needs: call-stage-build
     uses: ./.github/workflows/build.yml
     with:
-      app-name: my-java-app
+      environment: PRODUCTION
+    secrets:
+      API_TOKEN: ${{ secrets.ENV_SECERET_PROD }}
