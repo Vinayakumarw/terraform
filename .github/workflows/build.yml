@@ -22,4 +22,4 @@ jobs:
       - name: Run Build
         run: |
           echo "Building for target environment: ${{ inputs.environment }}"
-          echo "Using secret token: ${{ secrets.ENV_VAR }}"
+          echo "Using variable token: ${{ vars.ENV_VAR }}"
