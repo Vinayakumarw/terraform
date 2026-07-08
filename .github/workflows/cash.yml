@@ -1,0 +1,38 @@
+name: cashing
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  action-cash:
+    name: demo-cash
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Restore cash
+        id: demo-cash
+        uses: actions/cache@v4
+        with:
+          path: demo-cash
+          key: demo-cash-v1
+
+      - name: populate cash directory
+        if: steps.demo-cash.outputs.cache-hit != 'true'
+        run: |
+          echo "creating the cash directory"
+          mkdir -p demo-cash
+          ifconfig > demo-cash/ifconfig.txt
+          # Add your cashing commands here
+
+      - name: Save cash
+        if: steps.demo-cash.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: demo-cash
+          key: demo-cash-v1
+    
+      - name: Display cash content
+        run: |
+          echo "Displaying the contents of the cash directory:"
+          ls -l demo-cash
+          cat demo-cash/ifconfig.txt
