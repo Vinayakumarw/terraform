@@ -12,7 +12,11 @@ jobs:
     with:
       environment: STAGE
     secrets:
+<<<<<<< HEAD
       ENV_VAR: ${{ secrets.ENV_VAR }}
+=======
+      API_TOKEN: ${{ secrets.ENV_SECRET }}
+>>>>>>> parent of c6a72dd (UPDATING THE ISSUE)
 
   # Call the same reusable workflow for Production
   call-prod-build:
@@ -21,4 +25,8 @@ jobs:
     with:
       environment: PRODUCTION
     secrets:
+<<<<<<< HEAD
       ENV_VAR: ${{ secrets.ENV_VAR_PROD }}
+=======
+      API_TOKEN: ${{ secrets.ENV_SECERET_PROD }}
+>>>>>>> parent of c6a72dd (UPDATING THE ISSUE)
